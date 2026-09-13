@@ -1,12 +1,14 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Counter{
-    int counter;
+    AtomicInteger counter;
 
     public Counter(){
-        this.counter=0;
+        this.counter = new AtomicInteger(0);
     }
 
-    public void increment(){
-        this.counter++;
+    public synchronized void increment(){
+        this.counter.getAndIncrement();
     }
 }
 
